@@ -1,0 +1,11 @@
+
+.vs/Stream/v17/.suo
+*.pdb
+*.cache
+Stream/obj/Debug/net6.0/Stream.csproj.AssemblyReference.cache
+Stream/obj/Debug/net6.0/Stream.assets.cache
+obj/
+bin/
+.vs/
+*.TMP
+*.user
