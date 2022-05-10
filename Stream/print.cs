@@ -28,7 +28,7 @@
 
                     case "F":
                     case "f":
-                        directories.PrintDirectory(drive.GetDrivesName());
+                        directories.PrintDriveDirectory(drive.GetDrivesName());
                         break;
 
                     case "E":
