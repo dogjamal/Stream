@@ -4,8 +4,8 @@
     {
         static void Main(string[] args)
         {
-            var mdr = new print();
-            mdr.print_method();
+            var print = new Print();
+            print.PrintMethod();
         }
     }
 }

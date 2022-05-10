@@ -1,11 +1,11 @@
 ﻿namespace Stream
 {
-    internal class print
+    internal class Print
     {
-        internal void print_method()
+        internal void PrintMethod()
         {
-            var mdr = new drive();
-            var mdi = new directories();
+            var drive = new Drive();
+            var directories = new Directories();
 
             Console.WriteLine("Type P for print Drives");
             Console.WriteLine("Type F for print info about Directories");
@@ -23,12 +23,12 @@
                 {
                     case "P":
                     case "p":
-                        mdr.print_drive();
+                        drive.PrintDrive();
                         break;
 
                     case "F":
                     case "f":
-                        mdi.print_directory();
+                        directories.PrintDirectory(drive.GetDrivesName());
                         break;
 
                     case "E":
