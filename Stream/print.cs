@@ -8,13 +8,7 @@
             var directories = new Directories();
             var files = new Files();
 
-
-            Console.WriteLine("Type P for print Drives");
-            Console.WriteLine("Type D for print info about Directories");
-            Console.WriteLine("Type CF to create file");
-            Console.WriteLine("Type DF to delete file");
-            Console.WriteLine("*************************************");
-            Console.WriteLine("Type E Exit");
+            PrintHeader();
 
             string response = "";
             bool exiting = false;
@@ -47,6 +41,18 @@
                         files.DeleteFileWithPath(directories.GetDirPath(), files.GetFileName());
                         break;
 
+                    case "CD":
+                    case "Cd":
+                    case "cd":
+                        directories.CreateDirectoryWithPath(directories.GetDirPath(), directories.GetNewDirectoryName());
+                        break;
+
+                    case "DD":
+                    case "Dd":
+                    case "dd":
+                        directories.DeleteDirectoryWithPath(directories.GetDirPath());
+                        break;
+
                     case "E":
                     case "e":
                         Console.WriteLine("Good Bye!");
@@ -55,13 +61,7 @@
                         break;
                     default:
                         Console.WriteLine($"no command for {response} key");
-                        Console.WriteLine("*************************************");
-                        Console.WriteLine("Type P for print Drives");
-                        Console.WriteLine("Type D for print info about Directories");
-                        Console.WriteLine("Type CF to create file");
-                        Console.WriteLine("Type DF to delete file");
-                        Console.WriteLine("*************************************");
-                        Console.WriteLine("Type E Exit");
+                        PrintHeader();
                         break;
                 }
 
@@ -74,6 +74,19 @@
                     response = Console.ReadLine();
                 }
             }
+        }
+
+        internal void PrintHeader()
+        {
+            Console.WriteLine("*************************************");
+            Console.WriteLine("Type P for print Drives");
+            Console.WriteLine("Type D for print info about Directories");
+            Console.WriteLine("Type CF to create File");
+            Console.WriteLine("Type DF to delete File");
+            Console.WriteLine("Type CD to create Directory");
+            Console.WriteLine("Type DD to delete Directory");
+            Console.WriteLine("*************************************");
+            Console.WriteLine("Type E Exit");
         }
     }
 }
