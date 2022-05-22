@@ -6,9 +6,13 @@
         {
             var drive = new Drive();
             var directories = new Directories();
+            var files = new Files();
+
 
             Console.WriteLine("Type P for print Drives");
-            Console.WriteLine("Type F for print info about Directories");
+            Console.WriteLine("Type D for print info about Directories");
+            Console.WriteLine("Type CF to create file");
+            Console.WriteLine("Type DF to delete file");
             Console.WriteLine("*************************************");
             Console.WriteLine("Type E Exit");
 
@@ -26,9 +30,21 @@
                         drive.PrintDrive();
                         break;
 
-                    case "F":
-                    case "f":
+                    case "D":
+                    case "d":
                         directories.PrintDriveDirectory(drive.GetDrivesName());
+                        break;
+
+                    case "CF":
+                    case "Cf":
+                    case "cf":
+                        files.CreateFileWithPath(directories.GetDirPath(), files.GetFileName());
+                        break;
+
+                    case "DF":
+                    case "Df":
+                    case "df":
+                        files.DeleteFileWithPath(directories.GetDirPath(), files.GetFileName());
                         break;
 
                     case "E":
@@ -41,7 +57,9 @@
                         Console.WriteLine($"no command for {response} key");
                         Console.WriteLine("*************************************");
                         Console.WriteLine("Type P for print Drives");
-                        Console.WriteLine("Type F for print info about Directories");
+                        Console.WriteLine("Type D for print info about Directories");
+                        Console.WriteLine("Type CF to create file");
+                        Console.WriteLine("Type DF to delete file");
                         Console.WriteLine("*************************************");
                         Console.WriteLine("Type E Exit");
                         break;

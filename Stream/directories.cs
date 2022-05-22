@@ -43,5 +43,11 @@
                 }
             }
         }
+
+        internal string GetDirPath()
+        {
+            Console.WriteLine("Type directory path");
+            return Console.ReadLine();
+        }
     }
 }
