@@ -44,9 +44,52 @@
             }
         }
 
+        internal void CreateDirectoryWithPath(string dirPath, string newDirectoryName)
+        {
+            if (!Directory.Exists(dirPath))
+                Console.WriteLine("Directory doesn't exist");
+            else
+            {
+                var directory = new DirectoryInfo(dirPath);
+
+                try
+                {
+                    directory.CreateSubdirectory(newDirectoryName);
+                }
+                catch (Exception e) { Console.WriteLine(e.Message); }
+
+                Console.WriteLine("Directory created");
+                Console.WriteLine("Full Name   : {0}", directory.FullName);
+            }
+        }
+
+        internal void DeleteDirectoryWithPath(string dirPath)
+        {
+            if (!Directory.Exists(dirPath))
+                Console.WriteLine("File doesn't exist");
+            else
+            {
+                var directory = new DirectoryInfo(dirPath);
+
+                try
+                {
+                    directory.Delete();
+                }
+                catch (Exception e) { Console.WriteLine(e.Message); }
+
+                Console.WriteLine("Directory deleted");
+            }
+        }
+
         internal string GetDirPath()
         {
             Console.WriteLine("Type directory path");
+            return Console.ReadLine();
+        }
+
+        internal string GetNewDirectoryName()
+        {
+            Console.WriteLine("Type name for new directory");
             return Console.ReadLine();
         }
     }
