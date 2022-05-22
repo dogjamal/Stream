@@ -76,7 +76,7 @@
             }
         }
 
-        internal void PrintHeader()
+        private void PrintHeader()
         {
             Console.WriteLine("*************************************");
             Console.WriteLine("Type P for print Drives");
