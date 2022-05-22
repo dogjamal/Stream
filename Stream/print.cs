@@ -7,6 +7,7 @@
             var drive = new Drive();
             var directories = new Directories();
             var files = new Files();
+            var streaming = new Streaming();
 
             PrintHeader();
 
@@ -53,6 +54,17 @@
                         directories.DeleteDirectoryWithPath(directories.GetDirPath());
                         break;
 
+                    case "UF":
+                    case "Uf":
+                    case "uf":
+                        streaming.UpdateFile(streaming.GetFullFileNameWithExtension(), streaming.GetMessageToUpdateFile());
+                        break;
+
+                    case "SF":
+                    case "Sf":
+                    case "sf":
+                        streaming.ShowFileInfo(streaming.GetFullFileNameWithExtension());
+                        break;
                     case "E":
                     case "e":
                         Console.WriteLine("Good Bye!");
@@ -85,6 +97,8 @@
             Console.WriteLine("Type DF to delete File");
             Console.WriteLine("Type CD to create Directory");
             Console.WriteLine("Type DD to delete Directory");
+            Console.WriteLine("Type UF to update File");
+            Console.WriteLine("Type SF to show File info");
             Console.WriteLine("*************************************");
             Console.WriteLine("Type E Exit");
         }
