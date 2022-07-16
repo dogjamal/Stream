@@ -88,6 +88,7 @@
             Console.WriteLine("Type P for print Drives");
             Console.WriteLine("Type D for print info about Directories");
             Console.WriteLine("Type SF to show File info");
+            Console.WriteLine("Type CD to show Files and Directories names");
             Console.WriteLine("*************************************");
             Console.WriteLine("Type M to return Main menu");
             Console.ResetColor();
@@ -208,6 +209,13 @@
                     case "Sf":
                     case "sf":
                         streaming.ShowFileInfo(streaming.GetFullFileNameWithExtension());
+                        FunctionDone();
+                        break;
+
+                    case "CD":
+                    case "Cd":
+                    case "cd":
+                        directories.PrintCurrentPlaceDriveDirectory();
                         FunctionDone();
                         break;
                     case "M":
