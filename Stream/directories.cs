@@ -44,6 +44,81 @@
             }
         }
 
+        internal void PrintCurrentPlaceDriveDirectory()
+        {
+            string catalog = Directory.GetCurrentDirectory();
+            DirectoryInfo dirinfo = new DirectoryInfo(catalog);
+
+            if (catalog == null)
+                Console.WriteLine("Empty directories");
+            else
+            {
+                try
+                {
+                    PrintDirectoryAndFileInfoName(catalog);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Exception: {e.Message}");
+                }
+            }
+        }
+        internal void PrintDirectoryAndFileInfoName(string dirName)
+        {
+            var directory = new DirectoryInfo(dirName);
+
+            if (directory.Exists)
+            {
+                List<string> listOfFileAndDir = GetRecursFileAndDir(dirName);
+
+                List<string> GetRecursFileAndDir(string start_path)
+                {
+                    List<string> listOfFileAndDir = new List<string>();
+                    try
+                    {
+                        string[] folders = Directory.GetDirectories(start_path);
+                        foreach (string folder in folders)
+                        {
+                            listOfFileAndDir.Add("Directory: " + folder);
+                            listOfFileAndDir.AddRange(GetRecursFileAndDir(folder));
+                        }
+                        string[] files = Directory.GetFiles(start_path);
+                        foreach (string filename in files)
+                        {
+                            listOfFileAndDir.Add("File: " + filename);
+                        }
+                    }
+                    catch (System.Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                    }
+                    return listOfFileAndDir;
+                }
+
+                foreach (string fileAndDir in listOfFileAndDir)
+                {
+                    Console.WriteLine(fileAndDir);
+                }
+            }
+        }
+
+        internal void ChangeCurrentDirectory(string targetDirPath)
+        {
+            try
+            {
+                string path = Directory.GetCurrentDirectory();
+
+                if (!Directory.Exists(targetDirPath))
+                    Console.WriteLine("Directory doesn't exist");
+
+                Environment.CurrentDirectory = (targetDirPath);
+                if (path.Equals(Directory.GetCurrentDirectory()))
+                    Console.WriteLine("You are in the current directory.");
+                Directory.SetCurrentDirectory(targetDirPath);
+            }
+            catch (Exception e) { Console.WriteLine(e.Message); }
+        }
+
         internal void CreateDirectoryWithPath(string dirPath, string newDirectoryName)
         {
             if (!Directory.Exists(dirPath))
